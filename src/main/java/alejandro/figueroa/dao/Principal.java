@@ -1,45 +1,18 @@
 package alejandro.figueroa.dao;
-
-import java.util.List;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
-
-import alejandro.figueroa.configuracion.HibernateUtils;
 import alejandro.figueroa.entities.*;
 
 public class Principal {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub	
-		SessionFactory fabricaSesiones = HibernateUtils.obtenerFabricaSesiones();
+		EmpleadoDAO empDAO = new EmpleadoDAO();
 		
-		Session sesionHibernate = fabricaSesiones.openSession();
+		Empleado e = new Empleado();
+		e.setApellidos("Figueroa jejej");
+		e.setNombre("Alejandro ");
 		
-		Transaction t = null;
-		
-		// Quiero solamente el nombre de la cancion y el nombre del autor
-		try {
-			t = sesionHibernate.beginTransaction();
-			
-			Empleado emp = new Empleado();
-			
-			emp.setNombre("Ale");
-			emp.setApellidos("Alonso Figueroa");
-			
-			sesionHibernate.save(emp);
-			
-			t.commit();
-		}catch(Exception e) {
-			e.printStackTrace();
-			t.rollback();
-		}
-	
-		
-		
-
+		empDAO.openCurrentSessionwithTransaction();
+		empDAO.persist(e);
+		empDAO.closeCurrentSessionwithTransaction();
 	}
 
 }
