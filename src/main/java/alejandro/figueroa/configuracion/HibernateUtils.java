@@ -1,9 +1,10 @@
 package alejandro.figueroa.configuracion;
 
 import org.hibernate.SessionFactory;
+
 import org.hibernate.cfg.Configuration;
 
-import alejandro.figueroa.entities.Empleado;
+import alejandro.figueroa.entities.*;
 
 
 public class HibernateUtils {
@@ -18,6 +19,7 @@ private static SessionFactory fabricaSesiones = null;
 			configHibernate.configure();
 			
 			configHibernate.addAnnotatedClass(Empleado.class);
+			configHibernate.addAnnotatedClass(Venta.class);
 			
 			fabricaSesiones = configHibernate.buildSessionFactory();
 		}

@@ -1,10 +1,13 @@
 package alejandro.figueroa.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +24,10 @@ public class Empleado {
 	
 	@Column(name = "APELLIDOS")
 	private String apellidos;
+	
+	@OneToMany(mappedBy = "emp")
+	private List<Venta> ventas;
+	
 	
 	public Empleado() {
 		

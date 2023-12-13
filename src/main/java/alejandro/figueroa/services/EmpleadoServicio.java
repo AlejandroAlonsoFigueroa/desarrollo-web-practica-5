@@ -17,4 +17,11 @@ public class EmpleadoServicio {
 		empDAO.closeCurrentSessionwithTransaction();
 	}
 	 
+	public void deleteById() {
+		
+	}
+	public void getById() {
+		
+	}
+	
 }
