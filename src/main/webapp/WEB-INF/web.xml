@@ -8,4 +8,14 @@
   <listener>
   	<listener-class>alejandro.figueroa.configuracion.ListenerTomcatStartup</listener-class>
   </listener>
+  <servlet>
+  	<servlet-name>EmpleadoServlet</servlet-name>
+  	<display-name>EmpleadoServlet</display-name>
+  	<description></description>
+  	<servlet-class>alejandro.figueroa.servlets.EmpleadoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EmpleadoServlet</servlet-name>
+  	<url-pattern>/EmpleadoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
