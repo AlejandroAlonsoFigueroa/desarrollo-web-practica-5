@@ -1,6 +1,10 @@
 package alejandro.figueroa.servlets;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +21,7 @@ public class EmpleadoServlet extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public EmpleadoServlet() {
+    	
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,14 +33,22 @@ public class EmpleadoServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//A vr
 		EmpleadoServicio emp = new EmpleadoServicio();
+		List<Venta> ventas = new ArrayList();
 		
-		Empleado e = new Empleado();
 		
+		/*Venta v = new Venta();
+		v.setMonto(new BigDecimal(123));
+		//v.setEmp(e);
+	
+		ventas.add(v);
+		
+		
+		Empleado e = new Empleado(ventas);
 		e.setNombre("Ale servlet");
 		e.setApellidos("servlets jklfksdf");
-		
+		e.setVentas(ventas);
 		emp.persist(e);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(request.getContextPath());*/
 	}
 
 	/**
