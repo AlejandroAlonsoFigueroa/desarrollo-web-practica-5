@@ -2,6 +2,9 @@ package alejandro.figueroa.entities;
 import javax.persistence.Entity;
 
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable; 
 import java.util.List;
 import javax.persistence.Column;
@@ -27,7 +30,7 @@ public class Cliente implements Serializable{
     @Column (name = "rfc")
     private String rfc;
     
-    
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "cliente")
     private List<Venta> ventas;    
 

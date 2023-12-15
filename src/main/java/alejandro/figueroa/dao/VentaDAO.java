@@ -12,7 +12,8 @@ import alejandro.figueroa.configuracion.HibernateUtils;
 import alejandro.figueroa.entities.*;
 public class VentaDAO {
 	
-	public void guardar(Venta v) {
+	public Boolean guardar(Venta v) {
+		Boolean saved = false;
 		try {
             Session session = HibernateUtils.getSessionFactory().getCurrentSession();
             Transaction t = session.beginTransaction();
@@ -22,10 +23,11 @@ public class VentaDAO {
             t.commit();
             session.close();
             
-            System.out.println("Termino");
+            saved = true;
         } catch (Exception e) {
         	e.printStackTrace();
         }
+		return saved;
 	}
 	public void eliminar(Venta v) {
 		try {

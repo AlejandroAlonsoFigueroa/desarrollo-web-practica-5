@@ -1,20 +1,13 @@
 package alejandro.figueroa.entities;
 import javax.persistence.Entity;
+
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.google.gson.annotations.Expose;
-
 import java.io.Serializable;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import java.sql.*;
-import java.math.*;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,11 +16,10 @@ import javax.persistence.ManyToOne;
 @Entity
 @Table(name="venta")
 public class Venta implements Serializable {
-    @Id
+    
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue(generator = "cliente_idcliente_seq", strategy = GenerationType.IDENTITY)
-    //@GeneratedValue(generator = "venta_idventa_seq", strategy = GenerationType.SEQUENCE)
-    //@SequenceGenerator(name = "venta_idventa_seq", sequenceName = "venta_idventa_seq", 
-    //        initialValue = 1, allocationSize = 1)
     @Column(name = "idventa")
     private Long idventa;
     @Column(name = "descripcion")
@@ -36,7 +28,6 @@ public class Venta implements Serializable {
     private Integer total;
     
     
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     private Cliente cliente;
@@ -79,15 +70,5 @@ public class Venta implements Serializable {
 		return "Venta [idventa=" + idventa + ", descripcion=" + descripcion + ", total=" + total + ", cliente="
 				+ cliente + "]";
 	}
-
-   
-//    public Long getIdCliente() {
-//        return idCliente;
-//    }
-//
-//    public void setIdCliente(Long idCliente) {
-//        this.idCliente = idCliente;
-//    }
-    
     
 }
