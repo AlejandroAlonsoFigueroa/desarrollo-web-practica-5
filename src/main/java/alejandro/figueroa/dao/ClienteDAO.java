@@ -11,7 +11,7 @@ import alejandro.figueroa.entities.Venta;
 
 public class ClienteDAO {
 
-	public static Cliente obtenerPorId(Long id) {
+	public  Cliente obtenerPorId(Long id) {
 		Cliente c  = null;
 		try {
             Session session = HibernateUtils.getSessionFactory().getCurrentSession();
@@ -28,7 +28,7 @@ public class ClienteDAO {
 		return c;
 	}
 	
-	public static void guardar(Cliente c) {
+	public  void guardar(Cliente c) {
 		try {
             Session session = HibernateUtils.getSessionFactory().getCurrentSession();
             Transaction t = session.beginTransaction();
@@ -45,7 +45,7 @@ public class ClienteDAO {
 	}
 	//detached
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Cliente c = new Cliente();
 		c.setNombre("Alejandro Figueroa");
 		c.setRfc("RFC-123");
@@ -60,7 +60,7 @@ public class ClienteDAO {
 			System.out.println(v);
 		}
 		
-	}
+	}*/
 	//El dao ya inserta clientes y obtiene el cliente con todas sus ventas
 }
 
