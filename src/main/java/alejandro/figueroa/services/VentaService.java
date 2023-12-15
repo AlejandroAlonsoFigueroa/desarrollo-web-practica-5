@@ -13,7 +13,6 @@ public class VentaService {
 	}
 	
 	public List<Venta> obtenerTodas() {
-		//return ventaDAO.obtenerPorId(id);
-		return null;
+		return ventaDAO.obtenerTodas();
 	}
 }

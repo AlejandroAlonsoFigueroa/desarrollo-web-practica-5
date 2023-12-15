@@ -1,12 +1,14 @@
 package alejandro.figueroa.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
 import alejandro.figueroa.configuracion.HibernateUtils;
-import alejandro.figueroa.entities.Venta;
 import alejandro.figueroa.entities.*;
 public class VentaDAO {
 	
@@ -70,7 +72,23 @@ public class VentaDAO {
         }
 		return v;
 	}
-	
+	public  List<Venta> obtenerTodas() {
+		List<Venta> ventas  = new ArrayList<Venta>();
+		try {
+            Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+            Transaction t = session.beginTransaction();
+                                    
+            Query<Venta> consultaVentas = session.createQuery("from Venta", Venta.class);
+            
+            ventas = consultaVentas.getResultList();
+            
+            t.commit();
+            session.close();
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+		return ventas;
+	}
 	public static void main(String[] args) {
 		//Venta v = obtenerPorId(2l);
 		//System.out.println(v.getCliente().getNombre());
