@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import alejandro.figueroa.configuracion.HibernateUtils;
 import alejandro.figueroa.entities.Cliente;
-import alejandro.figueroa.entities.Venta;
+
 
 public class ClienteDAO {
 
@@ -26,6 +28,24 @@ public class ClienteDAO {
         	e.printStackTrace();
         }
 		return c;
+	}
+	
+	public  List<Cliente> obtenerTodos() {
+		List<Cliente> clientes  = new ArrayList<Cliente>();
+		try {
+            Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+            Transaction t = session.beginTransaction();
+                                    
+            Query<Cliente> consultaClientes = session.createQuery("from Cliente", Cliente.class);
+            
+            clientes = consultaClientes.getResultList();
+            
+            t.commit();
+            session.close();
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+		return clientes;
 	}
 	
 	public  void guardar(Cliente c) {

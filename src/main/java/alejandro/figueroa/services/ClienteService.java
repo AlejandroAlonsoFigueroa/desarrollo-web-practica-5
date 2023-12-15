@@ -1,4 +1,6 @@
 package alejandro.figueroa.services;
+import java.util.List;
+
 import alejandro.figueroa.dao.*;
 import alejandro.figueroa.entities.*;
 public class ClienteService {
@@ -7,6 +9,10 @@ public class ClienteService {
 	
 	public Cliente obtenerPorId(Long id) {
 		return clienteDAO.obtenerPorId(id);
+	}
+	
+	public List<Cliente> obtenerTodos() {
+		return clienteDAO.obtenerTodos();
 	}
 
 }

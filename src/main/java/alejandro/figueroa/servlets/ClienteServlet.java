@@ -3,7 +3,7 @@ import alejandro.figueroa.entities.Cliente;
 
 import alejandro.figueroa.services.*;
 import java.io.IOException;
-
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,8 +35,8 @@ public class ClienteServlet extends HttpServlet {
 			Cliente c = clienteService.obtenerPorId(idCliente);
 			respuesta = ow.writeValueAsString(c);
 		}else {
-			//List<Cliente> clientes = clienteService.obtenerTodos(idCliente);
-			//respuesta = ow.writeValueAsString(clientes);
+			List<Cliente> clientes = clienteService.obtenerTodos();
+			respuesta = ow.writeValueAsString(clientes);
 		}
 		
 		 response.setContentType("application/json");
