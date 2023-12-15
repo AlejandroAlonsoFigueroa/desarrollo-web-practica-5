@@ -1,6 +1,9 @@
 package alejandro.figueroa.entities;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import com.google.gson.annotations.Expose;
+
 import java.io.Serializable; 
 import java.util.List;
 import javax.persistence.Column;
@@ -27,7 +30,8 @@ public class Cliente implements Serializable{
     @Column (name = "rfc")
     private String rfc;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
+    
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cliente")
     private List<Venta> ventas;    
 
     public Long getIdCliente() {

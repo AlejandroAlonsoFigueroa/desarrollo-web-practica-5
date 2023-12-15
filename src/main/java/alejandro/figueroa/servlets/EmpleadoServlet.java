@@ -1,18 +1,18 @@
 package alejandro.figueroa.servlets;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.google.gson.Gson;
 
-import alejandro.figueroa.services.*;
+
+import alejandro.figueroa.dao.ClienteDAO;
 import alejandro.figueroa.dao.VentaDAO;
 import alejandro.figueroa.entities.*;
 /**
@@ -60,13 +60,25 @@ public class EmpleadoServlet extends HttpServlet {
 		VentaDAO vDAO = new VentaDAO();
 		
 		
-		Venta v = vDAO.obtenerPorId(2l);
+		/*Venta v = vDAO.obtenerPorId(2l);
 		
+		System.out.println(v);
 		Venta vEj = new Venta();
 		vEj.setDescripcion("fdsfds");
 		vEj.setIdventa(3l);
 		vEj.setTotal(342);
-		 String json = new Gson().toJson(vEj);
+		 String json = new Gson().toJson(v);
+		 response.setContentType("application/json");
+		 response.setCharacterEncoding("UTF-8");
+		 response.getWriter().write(json);*/
+		
+		ClienteDAO cDAO = new ClienteDAO();
+		
+		Cliente c = cDAO.obtenerPorId(7l);
+		
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String json = ow.writeValueAsString(c);
+		//String json = new Gson().toJson(c);
 		 response.setContentType("application/json");
 		 response.setCharacterEncoding("UTF-8");
 		 response.getWriter().write(json);

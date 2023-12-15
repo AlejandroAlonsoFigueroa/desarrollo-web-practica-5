@@ -1,6 +1,10 @@
 package alejandro.figueroa.entities;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.gson.annotations.Expose;
+
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
@@ -31,6 +35,8 @@ public class Venta implements Serializable {
     @Column(name = "total")
     private Integer total;
     
+    
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     private Cliente cliente;
