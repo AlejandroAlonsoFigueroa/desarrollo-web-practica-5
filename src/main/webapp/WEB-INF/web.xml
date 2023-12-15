@@ -14,8 +14,18 @@
   	<description></description>
   	<servlet-class>alejandro.figueroa.servlets.ClienteServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>VentaServlet</servlet-name>
+  	<display-name>VentaServlet</display-name>
+  	<description></description>
+  	<servlet-class>alejandro.figueroa.servlets.VentaServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ClienteServlet</servlet-name>
   	<url-pattern>/clientes</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>VentaServlet</servlet-name>
+  	<url-pattern>/ventas</url-pattern>
   </servlet-mapping>
 </web-app>

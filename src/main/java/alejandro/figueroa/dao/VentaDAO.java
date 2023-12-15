@@ -2,6 +2,7 @@ package alejandro.figueroa.dao;
 
 import java.util.List;
 
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import alejandro.figueroa.configuracion.HibernateUtils;
@@ -9,7 +10,7 @@ import alejandro.figueroa.entities.Venta;
 import alejandro.figueroa.entities.*;
 public class VentaDAO {
 	
-	public static void guardar(Venta v) {
+	public void guardar(Venta v) {
 		try {
             Session session = HibernateUtils.getSessionFactory().getCurrentSession();
             Transaction t = session.beginTransaction();
@@ -53,7 +54,7 @@ public class VentaDAO {
         }
 	}
 	
-	public static Venta obtenerPorId(Long id) {
+	public Venta obtenerPorId(Long id) {
 		Venta v  = null;
 		try {
             Session session = HibernateUtils.getSessionFactory().getCurrentSession();
@@ -86,7 +87,7 @@ public class VentaDAO {
 		
 		v.setCliente(c);
 		
-		guardar(v);
+		//guardar(v);
 	}
 	// Se trae la venta y su respectivo y obligatorio cliente
 	// Para guardar igual es obligatorio el cliente, ni modo que no tenga no, si no quien compró
