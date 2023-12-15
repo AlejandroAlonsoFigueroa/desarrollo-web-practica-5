@@ -21,18 +21,18 @@ import org.hibernate.Transaction;
 import java.util.ArrayList;
 import alejandro.figueroa.configuracion.HibernateUtils;
 
-public class Principal {
+public  class Principal {
 
 	// La entidad dueña de la relacion hace que se intente guardar en cascada
-	public static void main(String[] args) {
+	//public static void main(String[] args) {
 	        
 		//guardarAlgo();
-		obtenerVenta();
+		//obtenerVenta();
 		
-	}
+	//}
 	
 	// quitar los unique de guardado
-	static void guardarAlgo() {
+	public void guardarAlgo() {
 		
 		try {
             Session session = HibernateUtils.getSessionFactory().getCurrentSession();
@@ -62,7 +62,7 @@ public class Principal {
         }
 	}
 	// ager lazy cascada
-	static void obtenerVenta() {
+	public void obtenerVenta() {
 
 		try {
             Session session = HibernateUtils.getSessionFactory().getCurrentSession();

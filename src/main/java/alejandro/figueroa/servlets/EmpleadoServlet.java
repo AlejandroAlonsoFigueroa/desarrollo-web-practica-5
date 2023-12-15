@@ -32,8 +32,9 @@ public class EmpleadoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//A vr
-		EmpleadoServicio emp = new EmpleadoServicio();
-		List<Venta> ventas = new ArrayList();
+		//EmpleadoServicio emp = new EmpleadoServicio();
+		//List<Venta> ventas = new ArrayList();
+		
 		
 		
 		/*Venta v = new Venta();
@@ -49,6 +50,8 @@ public class EmpleadoServlet extends HttpServlet {
 		e.setVentas(ventas);
 		emp.persist(e);
 		response.getWriter().append("Served at: ").append(request.getContextPath());*/
+		Principal p = new Principal();
+		p.obtenerVenta();
 	}
 
 	/**
