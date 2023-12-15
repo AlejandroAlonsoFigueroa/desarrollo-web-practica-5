@@ -24,12 +24,15 @@ import alejandro.figueroa.configuracion.HibernateUtils;
 public  class Principal {
 
 	// La entidad dueña de la relacion hace que se intente guardar en cascada
-	//public static void main(String[] args) {
+	public static void main(String[] args) {
 	        
 		//guardarAlgo();
 		//obtenerVenta();
+		//VentaDAO vdao = new VentaDAO();
 		
-	//}
+	}
+	
+	
 	
 	// quitar los unique de guardado
 	public void guardarAlgo() {

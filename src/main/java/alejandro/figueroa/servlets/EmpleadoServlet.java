@@ -9,7 +9,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
 import alejandro.figueroa.services.*;
+import alejandro.figueroa.dao.VentaDAO;
 import alejandro.figueroa.entities.*;
 /**
  * Servlet implementation class EmpleadoServlet
@@ -50,8 +54,22 @@ public class EmpleadoServlet extends HttpServlet {
 		e.setVentas(ventas);
 		emp.persist(e);
 		response.getWriter().append("Served at: ").append(request.getContextPath());*/
-		Principal p = new Principal();
-		p.obtenerVenta();
+		//Principal p = new Principal();
+		//p.obtenerVenta();
+		
+		VentaDAO vDAO = new VentaDAO();
+		
+		
+		Venta v = vDAO.obtenerPorId(2l);
+		
+		Venta vEj = new Venta();
+		vEj.setDescripcion("fdsfds");
+		vEj.setIdventa(3l);
+		vEj.setTotal(342);
+		 String json = new Gson().toJson(vEj);
+		 response.setContentType("application/json");
+		 response.setCharacterEncoding("UTF-8");
+		 response.getWriter().write(json);
 	}
 
 	/**

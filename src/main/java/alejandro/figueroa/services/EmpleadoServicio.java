@@ -1,15 +1,15 @@
 package alejandro.figueroa.services;
 
 
-import alejandro.figueroa.dao.EmpleadoDAO;
+import alejandro.figueroa.dao.VentaDAO;
 
 
 public class EmpleadoServicio {
 	
-	private static EmpleadoDAO empDAO;
+	private static VentaDAO empDAO;
 	
 	public EmpleadoServicio(){
-		empDAO = new EmpleadoDAO();
+		empDAO = new VentaDAO();
 	}
 	
 	//public void persist(Empleado e) {
