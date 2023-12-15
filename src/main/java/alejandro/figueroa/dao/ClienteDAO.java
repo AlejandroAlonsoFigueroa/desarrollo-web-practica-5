@@ -48,7 +48,8 @@ public class ClienteDAO {
 		return clientes;
 	}
 	
-	public  void guardar(Cliente c) {
+	public  Boolean guardar(Cliente c) {
+		Boolean saved = false;
 		try {
             Session session = HibernateUtils.getSessionFactory().getCurrentSession();
             Transaction t = session.beginTransaction();
@@ -58,10 +59,11 @@ public class ClienteDAO {
             t.commit();
             session.close();
             
-            System.out.println("Termino");
+            saved = true;
         } catch (Exception e) {
         	e.printStackTrace();
         }
+		return saved;
 	}
 	//detached
 	

@@ -14,5 +14,8 @@ public class ClienteService {
 	public List<Cliente> obtenerTodos() {
 		return clienteDAO.obtenerTodos();
 	}
+	public Boolean guardarCliente(Cliente c) {
+		return clienteDAO.guardar(c);
+	}
 
 }
