@@ -31,7 +31,7 @@ public class Venta implements Serializable {
     @Column(name = "total")
     private Integer total;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     private Cliente cliente;
     
@@ -67,6 +67,12 @@ public class Venta implements Serializable {
 	public void setIdventa(Long idventa) {
         this.idventa = idventa;
     }
+
+	@Override
+	public String toString() {
+		return "Venta [idventa=" + idventa + ", descripcion=" + descripcion + ", total=" + total + ", cliente="
+				+ cliente + "]";
+	}
 
    
 //    public Long getIdCliente() {

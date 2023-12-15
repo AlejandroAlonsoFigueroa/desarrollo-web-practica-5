@@ -23,47 +23,64 @@ import alejandro.figueroa.configuracion.HibernateUtils;
 
 public class Principal {
 
+	// La entidad dueña de la relacion hace que se intente guardar en cascada
 	public static void main(String[] args) {
-	        try {
-	            Session session = HibernateUtils.getSessionFactory().getCurrentSession();
-	            Transaction t = session.beginTransaction();
-
-	            /*Venta v = new Venta();
-	            java.util.Date fechaT = new java.util.Date();
-	            v.setFecha(new Date(fechaT.getTime()));
-	            Cliente c = new Cliente();
-	            c.setIdCliente(1L);
-	            //v.setCliente(1L);
-	            v.setCliente(c);
-	            v.setTotal(new BigDecimal(20));   */
-	            java.util.Date fechaT = new java.util.Date();
-	            List<Venta> ventas = new ArrayList();
-	            
-	            Venta v = new Venta();
-	            v.setTotal(123);
-	            v.setDescripcion("Hola");
-	            ventas.add(v);
-	            
-	            Cliente c = new Cliente();
-	            c.setNombre("kfjdsnfds");
-	            c.setRfc("134");
-	            c.setVentas(ventas);
-	            
-	            v.setCliente(c);
-	            
-	            session.save(v);            
-
-	            
-	            
-	          
-	            
-	            t.commit();
-	            session.close();
-	            
-	            System.out.println("Termino");
-	        } catch (Exception e) {
-	        	e.printStackTrace();
-	        }
-	    }
+	        
+		//guardarAlgo();
+		obtenerVenta();
+		
+	}
 	
+	// quitar los unique de guardado
+	static void guardarAlgo() {
+		
+		try {
+            Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+            Transaction t = session.beginTransaction();
+            
+            Venta v = new Venta();
+            v.setTotal(123);
+            v.setDescripcion("dfsdfds");
+          
+            
+            Cliente c = new Cliente();
+            c.setNombre("fksjflksdfs");
+            c.setRfc("134");
+            
+            
+            v.setCliente(c);
+            
+            session.save(v);             
+          
+            
+            t.commit();
+            session.close();
+            
+            System.out.println("Termino");
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+	}
+	// ager lazy cascada
+	static void obtenerVenta() {
+
+		try {
+            Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+            Transaction t = session.beginTransaction();
+            
+            Venta v = session.get(Venta.class, 2l);
+          
+            System.out.println(v);
+            
+            t.commit();
+            session.close();
+            
+            System.out.println("Termino");
+            
+            //CUANDO ES LAZY DOS CONSULTAS, CUANDO ES EAGER UNA SOL CONSULTA
+            // O SEA SI ESTA AFECTANDO ACA
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+	}
 }
