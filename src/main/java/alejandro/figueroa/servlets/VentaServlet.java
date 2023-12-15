@@ -54,6 +54,7 @@ public class VentaServlet extends HttpServlet {
 		
 		Boolean guardadoCorrectamente = ventaService.guardarVenta(v);
 		
+		System.out.println(v);
 		
 		if(guardadoCorrectamente.booleanValue()) {
 			respuesta = "{\"respuesta\" : \"La venta se ha guardado correctamente\"}";
