@@ -14,11 +14,11 @@ import javax.persistence.OneToMany;
 @Entity
 @Table(name="cliente")
 public class Cliente implements Serializable{
-    @Id
+  
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(generator = "cliente_idcliente_seq", strategy = GenerationType.IDENTITY)
-    //@GeneratedValue(generator = "cliente_idcliente_seq", strategy = GenerationType.SEQUENCE)
-    //@SequenceGenerator(name = "cliente_idcliente_seq", sequenceName = "cliente_idcliente_seq", 
-    //        initialValue = 1, allocationSize = 1)
     @Column(name = "idcliente")
     private Long idCliente;
     
