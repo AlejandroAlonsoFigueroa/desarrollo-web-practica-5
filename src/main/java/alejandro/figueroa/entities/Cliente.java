@@ -62,6 +62,11 @@ public class Cliente implements Serializable{
     public void setVentas(List<Venta> ventas) {
         this.ventas = ventas;
     }
+
+	@Override
+	public String toString() {
+		return "Cliente [idCliente=" + idCliente + ", nombre=" + nombre + ", rfc=" + rfc + ", ventas=" + ventas + "]";
+	}
     
     
 }

@@ -47,8 +47,25 @@ public class ClienteServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String respuesta = "";
 		String requestBody =obtenerRequestBody(request);
+		ObjectMapper objMapper = new ObjectMapper();
+		Cliente c = objMapper.readValue(requestBody, Cliente.class);
+		
+		Boolean guardadoCorrectamente = clienteService.guardarCliente(c);
+		
+		
+		if(guardadoCorrectamente.booleanValue()) {
+			respuesta = "{\"respuesta\" : \"El cliente se ha guardado correctamente\"}";
+		}else {
+			respuesta = "{\"respuesta\" : \"Algo ha salido mal, el cliente no se guardo\"}";
+		}
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(respuesta);
 	}
+	
 	
 	private String obtenerRequestBody(HttpServletRequest request) {
 		String cuerpoPeticion = "";
