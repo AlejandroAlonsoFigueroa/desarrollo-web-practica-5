@@ -1,0 +1,15 @@
+CREATE TABLE cliente (
+	idcliente serial PRIMARY KEY,
+	nombre VARCHAR ( 50 ) UNIQUE NOT NULL,
+	rfc VARCHAR ( 50 ) NOT NULL
+);
+
+CREATE TABLE venta (
+	idventa serial PRIMARY KEY,
+	descripcion VARCHAR ( 50 ) UNIQUE NOT NULL,
+	total int  NOT NULL, 
+	idcliente INT, 
+	CONSTRAINT fk_cliente
+      FOREIGN KEY(idcliente) 
+	  REFERENCES cliente(idcliente)
+);

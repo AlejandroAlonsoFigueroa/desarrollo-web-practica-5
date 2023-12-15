@@ -45,7 +45,7 @@ public class Principal {
 	            ventas.add(v);
 	            
 	            Cliente c = new Cliente();
-	            c.setNombre("fsfdsds");
+	            c.setNombre("kfjdsnfds");
 	            c.setRfc("134");
 	            c.setVentas(ventas);
 	            

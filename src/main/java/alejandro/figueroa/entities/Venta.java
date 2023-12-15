@@ -2,6 +2,8 @@ package alejandro.figueroa.entities;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +31,7 @@ public class Venta implements Serializable {
     @Column(name = "total")
     private Integer total;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     private Cliente cliente;
     
